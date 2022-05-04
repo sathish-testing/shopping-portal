@@ -1,41 +1,42 @@
-pipeline {
-  agent any
-  stages {
-    stage('compile') {
-      steps {
-        echo 'this is the compile job'
-        sh 'npm install'
-      }
-    }
+pipeline{
 
-    stage('test') {
-      steps {
-        echo 'this is the test job'
-        sh 'npm test'
-      }
-    }
+    agent any
 
-    stage('package') {
-      steps {
-        echo 'this is the package job'
-        sh 'npm run package'
-      }
-    }
+// uncomment the following lines by removing /* and */ to enable
+    tools{
+       nodejs ‘nodejs’ 
+    }    
 
-    stage('archive') {
-      steps {
-        archiveArtifacts '**/distribution/*.zip'
-      }
+    stages{
+        stage(‘com’pile){
+            steps{
+                echo 'this is the first job'
+                sh ’npm install’
+                sleep 4
+            }
+        }
+        stage(‘test’){
+            steps{
+                echo 'this is the second job'
+                sh ‘npm test’
+                sleep 9
+            }
+        }
+        stage(‘Package’){
+            steps{
+                echo 'this is the third job'
+                sh ’npm run package’
+                sleep 7
+            }
+        }
     }
-
-  }
-  tools {
-    nodejs 'nodejs'
-  }
-  post {
-    always {
-      echo 'this is my dojo pipeline...'
+    
+    post{
+        always{
+            echo 'this pipeline has completed...'
+        }
+        
     }
-
-  }
+    
 }
+
