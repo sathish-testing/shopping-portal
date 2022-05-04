@@ -18,7 +18,7 @@ pipeline{
         stage(‘test’){
             steps{
                 echo 'this is the second job'
-               sh ' npm test'
+               sh 'npm test'
                 sleep 9
             }
         }
