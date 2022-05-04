@@ -8,24 +8,24 @@ pipeline{
     }    
 
     stages{
-        stage(‘com’pile){
+        stage(‘compile'){
             steps{
                 echo 'this is the first job'
-                sh ’npm install’
+                sh 'npm install'
                 sleep 4
             }
         }
         stage(‘test’){
             steps{
                 echo 'this is the second job'
-                sh ‘npm test’
+               sh ' npm test'
                 sleep 9
             }
         }
-        stage(‘Package’){
+        stage(‘package’){
             steps{
                 echo 'this is the third job'
-                sh ’npm run package’
+                sh 'npm run package'
                 sleep 7
             }
         }
