@@ -28,6 +28,12 @@ pipeline {
       }
     }
 
+    stage('Deploy to Prod') {
+      steps {
+        build 'ansible-playbook frontend.yml'
+      }
+    }
+
   }
   tools {
     nodejs 'nodejs'
